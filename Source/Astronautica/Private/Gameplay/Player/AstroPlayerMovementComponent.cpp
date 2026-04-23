@@ -3,6 +3,8 @@
 
 #include "Gameplay/Player/AstroPlayerMovementComponent.h"
 
+#include "Gameplay/Player/AstroPlayerPawn.h"
+
 UAstroPlayerMovementComponent::UAstroPlayerMovementComponent()
 {
 	CurrentMovementSolver = &GroundedMovementSolver;
@@ -40,6 +42,11 @@ void UAstroPlayerMovementComponent::SetMovementMode(EAstraMovementMode NewMode)
 	MovementMode = NewMode;
 	CurrentMovementSolver = &NewSolver;
 	NewSolver.Enter(*this);
+	
+	if (AAstroPlayerPawn* Pawn = Cast<AAstroPlayerPawn>(GetPawnOwner()))
+	{
+		Pawn->HandleMovementModeChanged(NewMode);
+	}
 }
 
 FMovementSolverBase& UAstroPlayerMovementComponent::GetMovementSolver(EAstraMovementMode InMovementMode)
