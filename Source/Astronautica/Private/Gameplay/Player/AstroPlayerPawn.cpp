@@ -77,6 +77,16 @@ void AAstroPlayerPawn::SetMoveUpDownInput(float Value)
 	MoveUpDownInput = Value;
 }
 
+float AAstroPlayerPawn::GetMoveForwardBackwardInput() const
+{
+	return MoveForwardBackwardInput;
+}
+
+float AAstroPlayerPawn::GetMoveLeftRightInput() const
+{
+	return MoveLeftRightInput;
+}
+
 void AAstroPlayerPawn::SetYawInput(float Value)
 {
 	YawInput = Value;

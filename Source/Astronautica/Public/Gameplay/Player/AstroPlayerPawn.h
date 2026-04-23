@@ -46,6 +46,8 @@ public:
 	void SetMoveForwardBackwardInput(float Value);
 	void SetMoveLeftRightInput(float Value);
 	void SetMoveUpDownInput(float Value);
+	float GetMoveForwardBackwardInput() const;
+	float GetMoveLeftRightInput() const;
 	void SetYawInput(float Value);
 	void SetPitchInput(float Value);
 	void SetRollInput(float Value);

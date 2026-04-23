@@ -23,6 +23,7 @@ public:
 
 	virtual void BeginPlay() override;
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	float GetGroundedMoveSpeed() const { return GroundedMoveSpeed; }
 
 private:
 	FGroundedMovementSolver GroundedMovementSolver;
@@ -33,6 +34,9 @@ private:
 	
 	UPROPERTY(VisibleAnywhere)
 	EAstraMovementMode MovementMode = EAstraMovementMode::Grounded;
+
+	UPROPERTY(EditAnywhere, Category = "Movement|Grounded", meta = (ClampMin = "0.0"))
+	float GroundedMoveSpeed = 600.0f;
 	
 	void SetMovementMode(EAstraMovementMode NewMode);
 	FMovementSolverBase& GetMovementSolver(EAstraMovementMode InMovementMode);

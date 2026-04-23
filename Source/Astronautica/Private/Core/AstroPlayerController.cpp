@@ -23,6 +23,11 @@ void AAstroPlayerController::BeginPlay()
 			{
 				InputSubsystem->AddMappingContext(IMC_Common, 0);
 			}
+
+			if (IMC_Grounded)
+			{
+				InputSubsystem->AddMappingContext(IMC_Grounded, 1);
+			}
 		}
 	}
 }
