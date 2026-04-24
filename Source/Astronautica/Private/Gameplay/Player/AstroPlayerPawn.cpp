@@ -87,6 +87,11 @@ float AAstroPlayerPawn::GetMoveLeftRightInput() const
 	return MoveLeftRightInput;
 }
 
+float AAstroPlayerPawn::GetMoveUpDownInput() const
+{
+	return MoveUpDownInput;
+}
+
 void AAstroPlayerPawn::SetYawInput(float Value)
 {
 	YawInput = Value;
@@ -102,9 +107,29 @@ void AAstroPlayerPawn::SetRollInput(float Value)
 	RollInput = Value;
 }
 
+float AAstroPlayerPawn::GetYawInput() const
+{
+	return YawInput;
+}
+
+float AAstroPlayerPawn::GetPitchInput() const
+{
+	return PitchInput;
+}
+
+float AAstroPlayerPawn::GetRollInput() const
+{
+	return RollInput;
+}
+
 void AAstroPlayerPawn::SetLookInput(FVector2D Value)
 {
 	LookInput = Value;
+}
+
+FVector2D AAstroPlayerPawn::GetLookInput() const
+{
+	return LookInput;
 }
 
 void AAstroPlayerPawn::SetSprintInput(bool Value)
@@ -122,6 +147,21 @@ void AAstroPlayerPawn::SetJumpInput(bool Value)
 	bJumpInput = Value;
 }
 
+bool AAstroPlayerPawn::GetSprintInput() const
+{
+	return bSprintInput;
+}
+
+bool AAstroPlayerPawn::GetCrouchInput() const
+{
+	return bCrouchInput;
+}
+
+bool AAstroPlayerPawn::GetJumpInput() const
+{
+	return bJumpInput;
+}
+
 void AAstroPlayerPawn::Interact()
 {
 	
@@ -137,3 +177,7 @@ void AAstroPlayerPawn::ToggleMagBoots()
 	bMagBootsEnabled = !bMagBootsEnabled;
 }
 
+bool AAstroPlayerPawn::GetMagBootsEnabled() const
+{
+	return bMagBootsEnabled;
+}

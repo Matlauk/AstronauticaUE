@@ -4,15 +4,20 @@
 #include "Gameplay/Player/AstroPlayerMovementComponent.h"
 
 #include "Gameplay/Player/AstroPlayerPawn.h"
+#include "Components/PrimitiveComponent.h"
 
 UAstroPlayerMovementComponent::UAstroPlayerMovementComponent()
 {
-	CurrentMovementSolver = &GroundedMovementSolver;
+	PrimaryComponentTick.bCanEverTick = true;
+	PrimaryComponentTick.TickGroup = TG_PrePhysics;
+	CurrentMovementSolver = &ZeroGravityMovementSolver;
 }
 
 void UAstroPlayerMovementComponent::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	SetMovementMode(MovementMode);
 
 	// Enter the default movement mode
 	CurrentMovementSolver->Enter(*this);
@@ -64,3 +69,25 @@ FMovementSolverBase& UAstroPlayerMovementComponent::GetMovementSolver(EAstraMove
 		return GroundedMovementSolver; // Fallback
 	}
 }
+
+void UAstroPlayerMovementComponent::SetUpdatedComponentPhysicsState(bool bSimulatePhysics, bool bEnableGravity)
+{
+	UPrimitiveComponent* PrimitiveComponent = Cast<UPrimitiveComponent>(UpdatedComponent);
+	if (PrimitiveComponent == nullptr)
+	{
+		return;
+	}
+
+	if (PrimitiveComponent->IsSimulatingPhysics() != bSimulatePhysics)
+	{
+		PrimitiveComponent->SetSimulatePhysics(bSimulatePhysics);
+	}
+
+	PrimitiveComponent->SetEnableGravity(bEnableGravity);
+
+	if (bSimulatePhysics)
+	{
+		PrimitiveComponent->WakeAllRigidBodies();
+	}
+}
+

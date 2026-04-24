@@ -48,16 +48,25 @@ public:
 	void SetMoveUpDownInput(float Value);
 	float GetMoveForwardBackwardInput() const;
 	float GetMoveLeftRightInput() const;
+	float GetMoveUpDownInput() const;
 	void SetYawInput(float Value);
 	void SetPitchInput(float Value);
 	void SetRollInput(float Value);
+	float GetYawInput() const;
+	float GetPitchInput() const;
+	float GetRollInput() const;
 	void SetLookInput(FVector2D Value);
+	FVector2D GetLookInput() const;
 	void SetSprintInput(bool Value);
 	void SetCrouchInput(bool Value);
 	void SetJumpInput(bool Value);
+	bool GetSprintInput() const;
+	bool GetCrouchInput() const;
+	bool GetJumpInput() const;
 	void Interact();
 	void SetMagBoots(bool Value);
 	void ToggleMagBoots();
+	bool GetMagBootsEnabled() const;
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))

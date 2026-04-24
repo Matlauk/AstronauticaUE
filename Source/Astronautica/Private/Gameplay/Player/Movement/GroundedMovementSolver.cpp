@@ -17,10 +17,13 @@ FGroundedMovementSolver::~FGroundedMovementSolver()
 
 void FGroundedMovementSolver::Enter(UAstroPlayerMovementComponent& MovementComponent)
 {
+	UE_LOG(LogTemp, Log, TEXT("GroundedMovementSolver Enter"));
+	MovementComponent.SetUpdatedComponentPhysicsState(false, true);
 }
 
 void FGroundedMovementSolver::Exit(UAstroPlayerMovementComponent& MovementComponent)
 {
+	UE_LOG(LogTemp, Log, TEXT("GroundedMovementSolver Exit"));
 }
 
 void FGroundedMovementSolver::Simulate(UAstroPlayerMovementComponent& MovementComponent, float DeltaTime)

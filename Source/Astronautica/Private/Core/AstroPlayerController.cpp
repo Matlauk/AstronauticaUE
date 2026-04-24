@@ -24,9 +24,9 @@ void AAstroPlayerController::BeginPlay()
 				InputSubsystem->AddMappingContext(IMC_Common, 0);
 			}
 
-			if (IMC_Grounded)
+			if (IMC_ZeroGravity)
 			{
-				InputSubsystem->AddMappingContext(IMC_Grounded, 1);
+				InputSubsystem->AddMappingContext(IMC_ZeroGravity, 1);
 			}
 		}
 	}
@@ -301,12 +301,15 @@ void AAstroPlayerController::HandlePawnMovementModeChanged(EAstraMovementMode Ne
 {	switch (NewMode)
 	{
 	case EAstraMovementMode::Grounded:
+		UE_LOG(LogTemp, Log, TEXT("HandlePawnMovementModeChanged: Applying Grounded context"));
 		SetGroundedInputMappingContext();
 		break;
 	case EAstraMovementMode::ZeroG:
+		UE_LOG(LogTemp, Log, TEXT("HandlePawnMovementModeChanged: Applying ZeroG context"));
 		SetZeroGravityInputMappingContext();
 		break;
 	default:
+		UE_LOG(LogTemp, Warning, TEXT("HandlePawnMovementModeChanged: No mapping context for mode %d"), static_cast<int32>(NewMode));
 		break;
 	}
 }

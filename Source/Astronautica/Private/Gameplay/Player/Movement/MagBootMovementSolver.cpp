@@ -14,10 +14,13 @@ FMagBootMovementSolver::~FMagBootMovementSolver()
 
 void FMagBootMovementSolver::Enter(UAstroPlayerMovementComponent& MovementComponent)
 {
+	UE_LOG(LogTemp, Log, TEXT("MagBootMovementSolver Enter"));
+	MovementComponent.SetUpdatedComponentPhysicsState(false, false);
 }
 
 void FMagBootMovementSolver::Exit(UAstroPlayerMovementComponent& MovementComponent)
 {
+	UE_LOG(LogTemp, Log, TEXT("MagBootMovementSolver Exit"));
 }
 
 void FMagBootMovementSolver::Simulate(UAstroPlayerMovementComponent& MovementComponent, float DeltaTime)
